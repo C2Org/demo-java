@@ -1,0 +1,19 @@
+name: Dependency Submission
+on:
+  push:
+    branches: [ 'main' ]
+
+permissions:
+  contents: write
+
+jobs:
+  maven-dependency-submission:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: 21
+    - name: submit dependency snapshot
+      uses: advanced-security/maven-dependency-submission-action@v5
